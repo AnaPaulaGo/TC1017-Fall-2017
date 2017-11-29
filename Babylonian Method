@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+using std::cout;
+using std::cin;
+using std::endl;
+using std::abs;
+
+
+float raizuno(float number, float guess) {
+  float anterior;
+  do{
+    anterior = guess;
+    guess = ((guess+(number/guess))/2);
+  } while (abs (guess - anterior) > 0.0001);
+    return guess;
+}
+
+int main(){
+  float a;
+  float x;
+  float y;
+
+  cout << "please introduce a number: ";
+  cin >> x;
+  cout << "introduce the suggested root: ";
+  cin >> y;
+  if (x>=0){
+    a = raizuno(x , y);
+    cout << "la raiz de " << x << " es: " << a << endl;
+  }else{
+    cout << "your number is imaginary, introduce other" << endl;
+  }
+  return 0;
+}
