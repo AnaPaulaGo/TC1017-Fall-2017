@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+float suma(float values[], int size){
+  int i = 0;
+  float sum = 0.0;
+  for (int i = 0; i < size; i++){
+    sum = sum + values[i];
+  }
+  return sum;
+}
+
+float resta( float values[], float avg){
+  float rest;
+  float r = 0;
+  float re;
+  float rep;
+  for (int i = 0; i < 10; i++){
+    rest = values[i] - avg;
+    r = r + rest;
+    re = (r + rest)*(r + rest);
+    rep = re/10;
+  }
+  return rep;
+}
+
+int main ()
+{
+  const int SIZE = 10;
+  float values[SIZE];
+  for (int i = 0; i < SIZE; i++){
+    cout << "asking for number " << i << ": ";
+    cin >> values [i];
+  }
+  float tot = suma(values,SIZE);
+  cout << "total is " << tot << endl;
+
+  float avg = tot/SIZE;
+  cout << "average is " << avg << endl;
+
+  float var = resta(values, avg);
+  cout <<"La varianza es " << var << endl;
+
+  float de = sqrt (var);
+  cout << "Desviacion estandar "<< de << endl;
+
+
+}
