@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std ;
+
+int rev(int invert){
+  int mod = 0;
+  do {
+    mod = ((mod + (invert % 10)) * 10);
+    invert = invert / 10;
+  } while( invert > 0 );
+  mod = mod / 10;
+  return mod;
+}
+
+int main () {
+    int lower;
+    int upper;
+    int n = 0;
+    int clower;
+    int reverse;
+    int palindrome = 0;
+    int lychrel = 0;
+    int nlychrel = 0;
+    cout << "Please, introduce the lower bound: " << endl ;
+    cin >> lower ;
+    cout << "Please, introduce the upper bound: " << endl ;
+    cin >> upper ;
+    clower = lower ;
+    int count = lower ;
+    do {
+        reverse = rev(clower);
+        if (clower == reverse){
+            palindrome ++ ;
+        }else
+            do {
+                clower = reverse + clower ;
+                reverse = rev(clower) ;
+                if (reverse == clower) {
+                    nlychrel ++;
+                    break ;
+                }
+                n ++ ;
+            } while ( n < 30) ;
+            if (clower!=reverse){
+              lychrel ++ ;
+            }
+        count += 1 ;
+        clower = count ;
+    } while ( clower <= upper) ;
+    cout << "From " << lower << " to " << upper << " are: " << endl ;
+    cout << palindrome << " palindromes" << endl;
+    cout << nlychrel << " non lychrel" << endl ;
+    cout << lychrel << " lychrel candidates" << endl ;
+
+    return 0 ;
+}
