@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
+using std:: abs;
+using std::setprecision;
+
+int factorial (int number){
+  int fact = 1;
+  int contador = 1;
+  if (number == 0){
+    return fact;
+  }else{
+    while (contador<=number){
+      fact =  fact * contador;
+      contador = contador + 1;
+    }
+  }
+  return fact;
+}
+
+float calculate_e(float precision){
+  double e = 0;
+  int contador = 0;
+  double previous = 9.9999999;
+  while (abs(e - previous) > precision){
+    previous = e;
+    e = ((1.0 / factorial (contador)) + e);
+    contador = contador + 1;
+  }
+  return e;
+}
+
+int main(){
+  double precisione;
+  double e;
+  cout << "Introduce the precision for the number e that you want: " << endl;
+  cin >> precisione ;
+  e = calculate_e(precisione);
+  cout << "Introduce the number of characters that will be printed: " << endl;
+  int a;
+  cin >> a;
+  cout << setprecision(a) << e << endl;
+
+  return 0;
+}
